@@ -32,7 +32,7 @@ _Example_
 
 ```Typescript
 import React from 'react';
-import {compose} from '@truefit/bach';
+import {compose, withCallback} from '@truefit/bach';
 import {withForm, FormContextValues} from '@truefit/bach-react-hook-form';
 
 type FormValues = {
@@ -43,26 +43,31 @@ type FormValues = {
 
 type Props = {
   formContext: FormContextValues<FormValues>;
+  onSubmit: (values: FormValues) => void;
 };
 
-const WithForm = ({formContext: {register, handleSubmit}}: Props) => (
+const WithForm = ({formContext: {register, handleSubmit}, onSubmit}: Props) => (
   <div>
-    <input name="name" ref={register} />
-    <input name="address" ref={register} />
-    <input name="age" ref={register} />
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input name="name" ref={register} />
+      <input name="address" ref={register} />
+      <input name="age" ref={register} />
 
-    <button type="submit">
-      Submit
-    </button>
+      <button type="submit">
+        Submit
+      </button>
+    </form>
   </div>
 );
 
+const onSubmit = () => (values: FormValues) => {
+  console.log(values);
+};
+
 export default compose(
+  withCallback('onSubmit', onSubmit),
   withForm({
     defaultValues: {name: 'John Doe', address: '', age: 0},
-    onSubmit: (values: FormValues) => {
-      console.log(values); // eslint-disable-line
-    },
   }),
 )(WithForm);
 ```
@@ -71,27 +76,31 @@ export default compose(
 
 ```Javascript
 import React from 'react';
-import {compose} from '@truefit/bach';
+import {compose, withCallback} from '@truefit/bach';
 import {withForm, FormContextValues} from '@truefit/bach-react-hook-form';
 
-const WithForm = ({formContext: {register, handleSubmit}}) => (
+const WithForm = ({formContext: {register, handleSubmit}, onSubmit}) => (
   <div>
-    <input name="name" ref={register} />
-    <input name="address" ref={register} />
-    <input name="age" ref={register} />
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input name="name" ref={register} />
+      <input name="address" ref={register} />
+      <input name="age" ref={register} />
 
-    <button type="submit">
-      Submit
-    </button>
+      <button type="submit">
+        Submit
+      </button>
+    </form>
   </div>
 );
 
+const onSubmit = () => (values) => {
+  console.log(values);
+};
+
 export default compose(
+  withCallback('onSubmit', onSubmit),
   withForm({
     defaultValues: {name: 'John Doe', address: '', age: 0},
-    onSubmit: (values) => {
-      console.log(values); // eslint-disable-line
-    },
   }),
 )(WithForm);
 ```
@@ -122,15 +131,11 @@ type Props = {
   formContext: FormContextValues<FormValues>;
 };
 
-const WithFormContext = ({formContext: {register, handleSubmit}}: Props) => (
+const WithFormContext = ({formContext: {register}}: Props) => (
   <div>
     <input name="name" ref={register} />
     <input name="address" ref={register} />
     <input name="age" ref={register} />
-
-    <button type="submit">
-      Submit
-    </button>
   </div>
 );
 
@@ -146,15 +151,11 @@ import React from 'react';
 import {compose} from '@truefit/bach';
 import {withFormContext, FormContextValues} from '@truefit/bach-react-hook-form';
 
-const WithFormContext = ({formContext: {register, handleSubmit}}) => (
+const WithFormContext = ({formContext: {register}}) => (
   <div>
     <input name="name" ref={register} />
     <input name="address" ref={register} />
     <input name="age" ref={register} />
-
-    <button type="submit">
-      Submit
-    </button>
   </div>
 );
 
