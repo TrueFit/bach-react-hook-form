@@ -22,9 +22,9 @@ Allows you access to the form methods from react hook form.
 
 _Helper Signature_
 
-| Parameter  | Type      | Description                                                                                    |
-| ---------- | --------- | ---------------------------------------------------------------------------------------------- |
-| formConfig | js object | a js object containing the props to pass to the useForm hook - see documentation for full list |
+| Parameter  | Type                 | Description                                                                                    |
+| ---------- | -------------------- | ---------------------------------------------------------------------------------------------- |
+| formConfig | js object (optional) | a js object containing the props to pass to the useForm hook - see documentation for full list |
 
 _Example_
 
