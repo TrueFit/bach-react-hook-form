@@ -1,6 +1,6 @@
 {
   "name": "@truefit/bach-react-hook-form",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "compose your react-hook-form's in style",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -33,22 +33,22 @@
     "react-hook-form": "^5.x"
   },
   "devDependencies": {
-    "@truefit/bach": "2.0.1",
-    "@types/node": "^13.11.0",
-    "@types/react": "^16.9.32",
-    "@typescript-eslint/eslint-plugin": "^2.26.0",
-    "@typescript-eslint/parser": "^2.26.0",
+    "@truefit/bach": "2.0.3",
+    "@types/node": "^13.13.2",
+    "@types/react": "^16.9.34",
+    "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "@typescript-eslint/parser": "^2.29.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-typescript-prettier": "^2.1.1",
-    "eslint-config-prettier": "^6.10.1",
+    "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^3.0.0",
-    "prettier": "^2.0.4",
+    "prettier": "^2.0.5",
     "react": "^16.13.1",
-    "react-hook-form": "^5.3.1",
-    "ts-node": "^8.8.2",
+    "react-hook-form": "^5.5.3",
+    "ts-node": "^8.9.0",
     "typescript": "^3.8.3"
   }
 }
