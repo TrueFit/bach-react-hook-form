@@ -166,3 +166,15 @@ export default compose(
 
 **React Hook Form Hook**
 [useFormContext](https://react-hook-form.com/api#useFormContext)
+
+### withWatch
+
+Wraps useWatch ... see [useWatch](https://react-hook-form.com/api/#useWatch).
+
+Accepts static configuration or a lazy eval function
+
+### withFieldArray
+
+Wraps useFieldArray ... see [useFieldArray](https://react-hook-form.com/api/#useFieldArray).
+
+Accepts static configuration or a lazy eval function
