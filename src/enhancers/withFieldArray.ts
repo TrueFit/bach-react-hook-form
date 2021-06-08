@@ -1,35 +1,40 @@
 import {EnhancerResult, EnhancerContext, isFunction, PROPS} from '@truefit/bach';
-import {useFieldArray, UseFieldArrayOptions, Control} from 'react-hook-form';
+import {useFieldArray, UseFieldArrayProps, FieldValues, FieldArrayPath} from 'react-hook-form';
 
 type FieldArrayOptionsParameter<
-  T,
+  T extends FieldValues = FieldValues,
+  TFieldArrayName extends FieldArrayPath<T> = FieldArrayPath<T>,
   TKeyName extends string = 'id',
-  TControl extends Control = Control
 > =
-  | UseFieldArrayOptions<TKeyName, TControl>
-  | ((props: T) => UseFieldArrayOptions<TKeyName, TControl>)
+  | UseFieldArrayProps<T, TFieldArrayName, TKeyName>
+  | ((props: T) => UseFieldArrayProps<T, TFieldArrayName, TKeyName>)
   | undefined;
 
-export default <T, TKeyName extends string = 'id', TControl extends Control = Control>(
-  options?: FieldArrayOptionsParameter<T>,
-  fieldArrayName = 'fieldArray',
-) => ({generateNewVariable}: EnhancerContext): EnhancerResult => {
-  const optionsAlias = generateNewVariable();
-  const resolveOptionsAlias = generateNewVariable();
-  const resolveOptions = isFunction(options)
-    ? options
-    : (): FieldArrayOptionsParameter<T, TKeyName, TControl> =>
-        options as FieldArrayOptionsParameter<T, TKeyName, TControl>;
+export default <
+    T extends FieldValues = FieldValues,
+    TFieldArrayName extends FieldArrayPath<T> = FieldArrayPath<T>,
+    TKeyName extends string = 'id',
+  >(
+    options?: FieldArrayOptionsParameter<T>,
+    fieldArrayName = 'fieldArray',
+  ) =>
+  ({generateNewVariable}: EnhancerContext): EnhancerResult => {
+    const optionsAlias = generateNewVariable();
+    const resolveOptionsAlias = generateNewVariable();
+    const resolveOptions = isFunction(options)
+      ? options
+      : (): FieldArrayOptionsParameter<T, TFieldArrayName, TKeyName> =>
+          options as FieldArrayOptionsParameter<T, TFieldArrayName, TKeyName>;
 
-  return {
-    dependencies: {
-      [resolveOptionsAlias]: resolveOptions,
-      useFieldArray,
-    },
-    initialize: `
+    return {
+      dependencies: {
+        [resolveOptionsAlias]: resolveOptions,
+        useFieldArray,
+      },
+      initialize: `
       const ${optionsAlias} = ${resolveOptionsAlias}(${PROPS});
       const ${fieldArrayName} = useFieldArray(${optionsAlias});
     `,
-    props: [fieldArrayName],
+      props: [fieldArrayName],
+    };
   };
-};

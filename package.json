@@ -33,9 +33,9 @@
     "react-hook-form": "7.x"
   },
   "devDependencies": {
-    "@truefit/bach": "2.0.9",
+    "@truefit/bach": "2.0.10",
     "@types/node": "^14.11.5",
-    "@types/react": "^16.9.51",
+    "@types/react": "^16.14.0",
     "@typescript-eslint/eslint-plugin": "^4.4.0",
     "@typescript-eslint/parser": "^4.4.0",
     "eslint": "^7.10.0",
@@ -46,8 +46,8 @@
     "eslint-plugin-react": "^7.21.3",
     "eslint-plugin-react-hooks": "^4.1.2",
     "prettier": "^2.1.2",
-    "react": "^16.13.1",
-    "react-hook-form": "^6.9.2",
+    "react": "^16.14.0",
+    "react-hook-form": "^7.8.2",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.3"
   }

@@ -33,7 +33,7 @@ _Example_
 ```Typescript
 import React from 'react';
 import {compose, withCallback} from '@truefit/bach';
-import {withForm, FormContextValues} from '@truefit/bach-react-hook-form';
+import {withForm, UseFormReturn} from '@truefit/bach-react-hook-form';
 
 type FormValues = {
   name: string;
@@ -42,16 +42,16 @@ type FormValues = {
 };
 
 type Props = {
-  formContext: FormContextValues<FormValues>;
+  formContext: UseFormReturn<FormValues>;
   onSubmit: (values: FormValues) => void;
 };
 
 const WithForm = ({formContext: {register, handleSubmit}, onSubmit}: Props) => (
   <div>
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input name="name" ref={register} />
-      <input name="address" ref={register} />
-      <input name="age" ref={register} />
+      <input {...register('name')} />
+      <input {...register('address')} />
+      <input {...register('age')} />
 
       <button type="submit">
         Submit
@@ -77,14 +77,14 @@ export default compose(
 ```Javascript
 import React from 'react';
 import {compose, withCallback} from '@truefit/bach';
-import {withForm, FormContextValues} from '@truefit/bach-react-hook-form';
+import {withForm} from '@truefit/bach-react-hook-form';
 
 const WithForm = ({formContext: {register, handleSubmit}, onSubmit}) => (
   <div>
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input name="name" ref={register} />
-      <input name="address" ref={register} />
-      <input name="age" ref={register} />
+      <input {...register('name')} />
+      <input {...register('address')} />
+      <input {...register('age')} />>
 
       <button type="submit">
         Submit
@@ -119,7 +119,7 @@ _Example_
 ```Typescript
 import React from 'react';
 import {compose} from '@truefit/bach';
-import {withFormContext, FormContextValues} from '@truefit/bach-react-hook-form';
+import {withFormContext, UseFormReturn} from '@truefit/bach-react-hook-form';
 
 type FormValues = {
   name: string;
@@ -128,14 +128,14 @@ type FormValues = {
 };
 
 type Props = {
-  formContext: FormContextValues<FormValues>;
+  formContext: UseFormReturn<FormValues>;
 };
 
 const WithFormContext = ({formContext: {register}}: Props) => (
   <div>
-    <input name="name" ref={register} />
-    <input name="address" ref={register} />
-    <input name="age" ref={register} />
+    <input {...register('name')} />
+    <input {...register('address')} />
+    <input {...register('age')} />
   </div>
 );
 
@@ -149,13 +149,13 @@ export default compose(
 ```Javascript
 import React from 'react';
 import {compose} from '@truefit/bach';
-import {withFormContext, FormContextValues} from '@truefit/bach-react-hook-form';
+import {withFormContext} from '@truefit/bach-react-hook-form';
 
 const WithFormContext = ({formContext: {register}}) => (
   <div>
-    <input name="name" ref={register} />
-    <input name="address" ref={register} />
-    <input name="age" ref={register} />
+    <input {...register('name')} />
+    <input {...register('address')} />
+    <input {...register('age')} />
   </div>
 );
 
