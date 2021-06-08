@@ -1,6 +1,6 @@
 {
   "name": "@truefit/bach-react-hook-form",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "description": "compose your react-hook-form's in style",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -30,7 +30,7 @@
   "peerDependencies": {
     "@truefit/bach": "2.x",
     "react": "16.x",
-    "react-hook-form": "6.x"
+    "react-hook-form": "7.x"
   },
   "devDependencies": {
     "@truefit/bach": "2.0.9",
