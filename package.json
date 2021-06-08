@@ -1,6 +1,6 @@
 {
   "name": "@truefit/bach-react-hook-form",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "compose your react-hook-form's in style",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
